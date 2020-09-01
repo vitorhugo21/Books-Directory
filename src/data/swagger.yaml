@@ -1,0 +1,113 @@
+swagger: "2.0"
+info:
+  description: "This is a REST API for a Book Directory, where is possible to add, get, update and delete books"
+  version: "1.0.0"
+  title: "Book Directory"
+  license:
+    name: "MIT License"
+    url: "https://opensource.org/licenses/MIT"
+host: "localhost:8080"
+basePath: "/"
+tags:
+- name: "Books"
+  description: "Every endpoint related to books"
+schemes:
+- "http"
+paths:
+  /books:
+    post:
+      tags:
+      - "Books"
+      summary: "Adds a new book to the directory"
+      description: "Adds a new book to the directory"
+      operationId: "insertBook"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Book object that needs to be added to the directory"
+        required: true
+        schema:
+          $ref: "#/definitions/Book"
+      responses:
+        "200":
+          description: "Success"
+    get:
+      tags:
+      - "Books"
+      summary: "Get all the books from the directory"
+      description: "Get all the books from the directory"
+      operationId: "getBooks"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "Success"
+  /books/{id}:
+    get:
+      tags:
+      - "Books"
+      summary: "Adds a new book to the directory"
+      description: "Adds a new book to the directory"
+      operationId: "getBook"
+      parameters:
+      - in: "path"
+        name: "id"
+        type: integer
+        description: "ISBN of the requested book"
+        required: true
+      responses:
+        "200":
+          description: "Success"
+    put:
+      tags:
+      - "Books"
+      summary: "Update a book from the directory"
+      description: "Update a book from the directory"
+      operationId: "updateBook"
+      parameters:
+      - in: "path"
+        name: "id"
+        type: integer
+        description: "ISBN of the requested book"
+        required: true
+      - in: "body"
+        name: "body"
+        description: "Book object that needs to be added to the directory"
+        required: true
+        schema:
+          $ref: "#/definitions/Book"
+      responses:
+        "200":
+          description: "Success"
+    delete:
+      tags:
+      - "Books"
+      summary: "Delete a book from the directory"
+      description: "Delete a book from the directory"
+      operationId: "deleteBook"
+      parameters:
+      - in: "path"
+        name: "id"
+        type: integer
+        description: "ISBN of the requested book"
+        required: true
+      responses:
+        "200":
+          description: "Success"
+definitions:
+  Book:
+    type: "object"
+    properties:
+      isbn:
+        type: "integer"
+        description: "ISBN of the book"
+      name:
+        type: "string"
+        description: "Name of the book"
+      numberOfPages:
+        type: "integer"
+        description: "Number of pages of the book"

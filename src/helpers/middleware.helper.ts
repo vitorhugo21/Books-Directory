@@ -53,8 +53,8 @@ const checkRequestBody = (req: Request, res: Response, next: NextFunction): void
     errorArray.message.push(error[1007].message);
   } else {
     if (!globalFunctions.numberIsInteger(numberOfPages)) {
-      errorArray.code.push(error[1003].code);
-      errorArray.message.push(error[1003].message);
+      errorArray.code.push(error[1004].code);
+      errorArray.message.push(error[1004].message);
     }
   }
 
