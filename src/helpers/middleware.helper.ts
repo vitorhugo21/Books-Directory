@@ -9,9 +9,9 @@ const isbnMustBeInteger = (req: Request, res: Response, next: NextFunction): voi
   try {
     if (!globalFunctions.numberIsInteger(parseInt(bookIsbn))) {
       throw error[1002];
-  } else {
-      next();
-  }
+    } else {
+        next();
+    }
   } catch (err) {
     res.status(400).json({
       error: true,

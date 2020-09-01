@@ -101,7 +101,6 @@ const updateBook = async (req: Request, res: Response): Promise<void> => {
       throw error[1001];
     }
 
-
     books[oldBookIndex] = updatedBook;
 
     await fs.writeJson(booksFile, books);
